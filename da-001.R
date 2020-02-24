@@ -5,10 +5,10 @@ library(twitteR)
 
 # Langkah 2: Setup twitter token ----
 # Jika belum punya bisa buat di: https://developer.twitter.com/en/apps/create
-consumer_key <- "TBTtU5huduqnZUtpbTw0UJYgo"
-consumer_secret <- "fnnbOtmtTGPwnzTku4u5KUI1UU1iDZMOIiOJfTqU7EMi7RzZc5"
-access_token <- "73705532-zZBiOJkVhEbQ9v1cpqSOtt0nE3BFurx5UlN0m50Gb"
-access_secret <- "hzmfS2zhuVU8bD0ON8YSDsITr7ABPo8Dxmthn5c0F3EuA"
+consumer_key <- "_isi_"
+consumer_secret <- "_isi_"
+access_token <- "_isi_"
+access_secret <- "_isi_"
 
 # Langkah 3: Menyimpan token ----
 # Ketik 1 atau tes di console setelah menjalankan skrip di bawah ini
@@ -55,7 +55,8 @@ response %>%
   geom_col()
 
 # Timeline user ----
-userT <- userTimeline(c("@canggihpw"), n=100, maxID=NULL, sinceID=NULL, includeRts=FALSE, 
+userT <- userTimeline(c("@canggihpw"), n=100, maxID=NULL, 
+                      sinceID=NULL, includeRts=FALSE, 
              excludeReplies=FALSE)
 userT <- twitteR::twListToDF(userT)
 

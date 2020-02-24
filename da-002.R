@@ -13,6 +13,8 @@ page <- xml2::read_html(url_target)
 
 # Menentukan nodes/letak data yang akan dimabil dari web
 # Contoh: ambil link dan judul most recent
+# nodes <- html_nodes(x = page, css = "ul > li > a")
+
 nodes <- html_nodes(x = page, css = "#content .latn ul a")
 
 # Langkah 4: Mengekstark isi nodes  ----
@@ -24,7 +26,7 @@ nodes %>%
 # Content 2: extract text
 # fungsi yang digunakan html_text()
 nodes %>% 
-  html_text()
+  html_text(trim = TRUE)
 
 # Langkah 5: Menyatukan data yg bisa diambil ----
 h1 <- data.frame(
@@ -33,7 +35,7 @@ h1 <- data.frame(
   judul = html_nodes(x = page, css = "#content .latn ul a") %>% 
     html_text(), 
   stringsAsFactors = FALSE
-)
+  )
 
 # Langkah 6: Membuatnya dalam sebuah fungsi ----
 # Keuntungan: lebih fleksibel dan bisa menambahkan skenario jika nodes yang ingin diambil tidak ada datanya
@@ -41,9 +43,8 @@ h1 <- data.frame(
 # Skenario: mengunduh semua page html dari link yang terdapat dalam objek h1 
 # menggunakan looping
 # nodes konten: #post- li , p
-
 # Langkah 1: Persiapan, tes konten
-page2 <- read_html(h1$link[1])
+page2 <- read_html(h1$link[2])
 
 judul <- html_nodes(page2, "#title") %>% 
   html_text(trim = TRUE) %>% 
@@ -70,10 +71,7 @@ get_hasil <- function(url) {
 }
 
 # tes fungsi
-tes <- get_hasil(url = h1$link[1])
-
-# Membuat list kosong untuk menampung hasil iterasi
-hasil <- list()
+tes <- get_hasil(url = h1$link[10])
 
 # Melakukan iterasi untuk masing-masing link di h1
 hasil <- list()
