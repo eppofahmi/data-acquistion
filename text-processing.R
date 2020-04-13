@@ -46,3 +46,5 @@ hasil_token <- hasil_token %>%
 
 set.seed(123)
 wordcloud(words = hasil_token$kata, freq = hasil_token$n, min.freq = 15)
+
+
